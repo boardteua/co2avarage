@@ -1,6 +1,7 @@
-#co2-emissions{
+#co2-emissions {
     list-style: none;
 }
+
 .chart-wrp {
     height: 100px;
     width: 100%;
@@ -10,4 +11,79 @@
     margin-top: 0;
 }
 
-.spinner_qM83{animation:spinner_8HQG 1.05s infinite}.spinner_oXPr{animation-delay:.1s}.spinner_ZTLf{animation-delay:.2s}@keyframes spinner_8HQG{0%,57.14%{animation-timing-function:cubic-bezier(0.33,.66,.66,1);transform:translate(0)}28.57%{animation-timing-function:cubic-bezier(0.33,0,.66,.33);transform:translateY(-6px)}100%{transform:translate(0)}}
+.charts-wrp {
+    margin-top: 10px;
+}
+
+.chart-wrp-average,
+.chart-wrp-your {
+    height: 30px;
+    width: 100%;
+    display: block;
+    background: #e0e0e0;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.chart-inner {
+    height: 30px;
+    color: #fff;
+    font-size: 10px;
+    display: block;
+    padding-right: 10px;
+    line-height: 30px;
+}
+
+.chart-value {
+    float: right;
+    display: block;
+    width: 70px;
+    text-align: right;
+}
+
+.chart-title {
+    display: block;
+    padding-right: 10px;
+    float: left;
+    width: 100px;
+    color: #000;
+}
+
+.chart-inner-average {
+    background: rgba(30, 122, 196, 1);
+}
+
+.chart-inner-your {
+    background: rgba(103, 171, 227, 1);
+}
+
+
+.spinner_qM83 {
+    animation: spinner_8HQG 1.05s infinite
+}
+
+.spinner_oXPr {
+    animation-delay: .1s
+}
+
+.spinner_ZTLf {
+    animation-delay: .2s
+}
+
+@keyframes spinner_8HQG {
+
+    0%,
+    57.14% {
+        animation-timing-function: cubic-bezier(0.33, .66, .66, 1);
+        transform: translate(0)
+    }
+
+    28.57% {
+        animation-timing-function: cubic-bezier(0.33, 0, .66, .33);
+        transform: translateY(-6px)
+    }
+
+    100% {
+        transform: translate(0)
+    }
+}

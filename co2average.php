@@ -4,8 +4,8 @@
   Plugin URI:  #
   Description: CO2 calculation helper,
   Version: 1.0
-  Author: Digia
-  Author URI: https://digia.co/
+  Author: org100h
+  Author URI: #
   License: GPLv2
   Text Domain: co2
  */
@@ -67,10 +67,14 @@ class co2average
 
     public function co2AverageShortcode($atts, $content = null)
     {
-        $atts = shortcode_atts(array(
-            'field-id' => '2',
-            'total' => 0
-        ), $atts, 'average');
+        $atts = shortcode_atts(
+            array(
+                'field-id' => '2',
+                'total' => 0
+            ),
+            $atts,
+            'average'
+        );
 
         $html = '<span data-total="' . $atts['total'] . '" 
                        data-id="' . $atts['field-id'] . '"
@@ -89,11 +93,15 @@ class co2average
 
     public function co2AveragePdfShortcode($atts, $content = null)
     {
-        $atts = shortcode_atts(array(
-            'field-id' => '2',
-            'form-id' => 2,
-            'total' => 0,
-        ), $atts, 'average');
+        $atts = shortcode_atts(
+            array(
+                'field-id' => '2',
+                'form-id' => 2,
+                'total' => 0,
+            ),
+            $atts,
+            'average'
+        );
 
         $calc = $this->co2CalculateAverage(
             $atts['form-id'],
@@ -111,52 +119,7 @@ class co2average
             $c = $c * 7; // Stupid but works
         }
 
-        $html = '<style>
-                    .charts-wrp{
-                       margin-top:10px;
-                    }
-                    
-                    .chart-wrp-average, .chart-wrp-your{
-                       height:30px;
-                       width:100%;
-                       display: block;
-                       background: #e0e0e0;
-                       margin-bottom: 10px;
-                       padding: 0;
-                    }
-                     .chart-inner{
-                        height:30px;
-                        color:#fff;
-                        font-size:10px;
-                        display: block;
-                        padding-right:10px;
-                        line-height: 30px;
-                    }
-                    .chart-value{
-                        float: right;
-                        display: block;
-                        width:70px;
-                        text-align: right;
-                    }
-                    
-                    .chart-title{
-                          display: block;
-                          padding-right: 10px;
-                          float:left;
-                          width:100px;
-                          color:#000;
-                    }
-                    
-                    .chart-inner-average{
-                        background: rgba(30,122,196,1);
-                    }
-                   
-                    .chart-inner-your{
-                        background: rgba(103,171,227,1);
-                    }
-                    
-                </style>
-                <div class="charts-wrp"> 
+        $html = '<div class="charts-wrp"> 
                      <div class="chart-title">' . __('Average', 'co2') . '</div>
                      <div class="chart-wrp chart-wrp-average">
                         <div style="width:' . round($b) . '%" class="chart-inner chart-inner-average">
@@ -223,8 +186,8 @@ class co2average
         $formData = $request->get_json_params();
         $this->co2_log($formData);
 
-        $form_id =  (int)$formData['form_id'] ?? false;
-        $field_id = (int)$formData['field_id'] ?? false;
+        $form_id = (int) $formData['form_id'] ?? false;
+        $field_id = (int) $formData['field_id'] ?? false;
 
         if (!$form_id || !$field_id)
             return rest_ensure_response(['error' => 'Empty params']);
@@ -252,8 +215,8 @@ class co2average
     {
         global $wpdb;
 
-        $form_id = (int)$form_id ?? false;
-        $field_id = (int)$field_id ?? false;
+        $form_id = (int) $form_id ?? false;
+        $field_id = (int) $field_id ?? false;
 
 
         $submissions_table = $wpdb->prefix . 'gf_entry';
@@ -282,7 +245,7 @@ class co2average
 
         // Calculate the sum of values and the number of submissions
         foreach ($submissions as $submission) {
-            $total += floatval((float)$submission->meta_value);
+            $total += floatval((float) $submission->meta_value);
             $sub[] = $submission->meta_value;
             $count++;
         }
