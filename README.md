@@ -14,6 +14,6 @@ For displaying the charts in the PDF templates for the form, we have used a diff
 <code>[getChart field-id="field ID" form-id="form ID" total="field value"]</code>
 <p>
 To include this shortcode in the PDF template, you can use the following code snippet:</p>
-<code><?php echo do_shortcode('[getChart field-id="8" form-id="2" total="' . $entry[8] . '" ]') ?></code>
+<code>echo do_shortcode('[getChart field-id="8" form-id="2" total="' . $entry[8] . '" ]') </code>
 <p>
 The plugin supports multilingual functionality, and you can add more languages using the Loco Translate plugin.</p>
